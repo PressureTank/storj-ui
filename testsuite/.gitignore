@@ -12,3 +12,4 @@ storj-up
 docker-compose.yaml
 dist/
 e2e/.history
+results.json
