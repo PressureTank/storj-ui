@@ -32,5 +32,11 @@ pipeline {
 			sh "earthly -P +integration"
 		}
 	}
+	stage('acceptance') {
+	    steps {
+	        // sh "earthly -P -i +acceptance"
+	        sh "echo automated acceptance tests, coming soon to a pipeline near you"
+	    }
+	}
     }
 }

@@ -178,6 +178,13 @@ func Integration() error {
 	return sh.RunV("bash", "test/test.sh")
 }
 
+// UserAcceptance executes end to end UI tests.
+//
+//nolint:deadcode
+func UserAcceptance() error {
+	return sh.RunV("bash", "testsuite/test.sh")
+}
+
 // RebuildImages rebuilds all core and edge images.
 //
 //nolint:deadcode
