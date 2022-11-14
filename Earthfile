@@ -42,13 +42,12 @@ test:
 
 acceptance:
    FROM earthly/dind:ubuntu
-   RUN apt-get update && apt-get install -y docker-compose-plugin gcc
+   RUN apt-get update && apt-get install -y docker-compose-plugin gcc jq
    RUN bash -c "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash"
    RUN bash -c "curl --fail -L https://go.dev/dl/go1.17.12.linux-amd64.tar.gz | tar -C /usr/local -xz && cp /usr/local/go/bin/go /usr/local/bin/go"
    RUN nvm install lts/fermium
    RUN npm ci
    RUN npx playwright install --with-deps
-   RUN mkdir build
    COPY +build/storj-up /root/go/bin/storj-up
    ENV PATH=$PATH:/root/go/bin
    WORKDIR /testsuite
