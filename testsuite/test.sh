@@ -10,6 +10,6 @@ storj-up health
 
 eval $(storj-up credentials -e)
 
-npx playwright test e2e/example.spec.ts
+npx playwright test e2e/sometest.spec.ts
 
 docker compose down
