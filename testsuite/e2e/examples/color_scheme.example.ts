@@ -1,3 +1,7 @@
+// Copyright (C) 2022 Storj Labs, Inc.
+// See LICENSE for copying information.
+// noinspection JSUnusedLocalSymbols,ES6UnusedImports
+
 import { test, expect } from '@playwright/test';
 
 test.use({
