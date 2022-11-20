@@ -7,9 +7,9 @@ const config: PlaywrightTestConfig = {
   testDir: './e2e',                                   /* directory where tests are located.  */
   timeout: 30 * 1000,                                 /* Maximum time one test can run for.  */
   expect: {
-    timeout: 5000                                     /* Maximum time expect() should wait for the condition to be met. */
+    timeout: 4000                                     /* Maximum time expect() should wait for the condition to be met. */
   },
-  fullyParallel: false,                               /* Run tests in files in parallel */
+  fullyParallel: false,                                /* Run tests in files in parallel */
   retries: process.env.CI ? 2 : 0,                    /* Retry on CI only */
   workers: process.env.CI ? 1 : undefined,            /* Opt out of parallel tests on CI. */
 
@@ -21,11 +21,11 @@ const config: PlaywrightTestConfig = {
   use: {                                              /* Shared settings for all the projects below. */
     actionTimeout: 0,                                 /* Maximum time each action can take. */
     baseURL: 'http://nightly.storj.rodeo:10000/',     /* Base URL to use in actions like `await page.goto('/')`. */
-    headless: false,                                  /* Starts the UI tests in headed mode so we can watch */
-    ignoreHTTPSErrors: true,                          /* suppress the errors relative to serving webdata   */
+    headless: true,                                   /* Starts the UI tests in headed mode so we can watch execution in development */
+    ignoreHTTPSErrors: true,                          /* suppress the errors relative to serving web data   */
     trace: 'on-first-retry',                          /* Collect trace when retrying the failed test. */
     launchOptions: {
-      slowMo: 50,
+      slowMo: 5,
     },
   },
 

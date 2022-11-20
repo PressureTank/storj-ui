@@ -2,7 +2,7 @@ import { test } from '@playwright/test';
 
 test('basic user test',
   async ({page}) => {
-    await page.goto('https://playwright.dev/');
+    await page.goto('/');
     await page.locator('div').filter({hasText: 'Sign In Storj Email Address Password Sign In Forgot your sign in details? Reset '}).nth(1).click();
     await page.getByRole('link', {name: 'Need to create an account?'}).click();
     await page.getByPlaceholder('Enter Full Name').click();
