@@ -1,11 +1,11 @@
-// fixtures.ts
+// pages.ts
 import { test as base, Page, Browser, Locator } from '@playwright/test';
 export { expect } from '@playwright/test';
 
 
 // Here you can add locators and helper methods specific to the admin page.
 class BusinessUser {
-	// Page signed in as "admin".
+
 	page: Page;
 
 	constructor(page: Page) {
@@ -40,14 +40,14 @@ class PersonalUser {
 	}
 }
 
-// Declare the types of your fixtures.
+// Declare the types of your pages.
 type MyFixtures = {
 	businessPage: BusinessUser;
 	personalPage: PersonalUser;
 };
 
 // Extend base test by providing "businessPage" and "userPage".
-// This new "test" can be used in multiple test files, and each of them will get the fixtures.
+// This new "test" can be used in multiple test files, and each of them will get the pages.
 export const test = base.extend<MyFixtures>({
 	businessPage: async ({ browser }, use) => {
 		await use(await BusinessUser.create(browser));
@@ -59,11 +59,11 @@ export const test = base.extend<MyFixtures>({
 
 
 // example.spec.ts
-// Import test with our new fixtures.
+// Import test with our new pages.
 
-/* import { test, expect } from './fixtures';
+/* import { test, expect } from './pages';
 *
-*  // Use businessPage and userPage fixtures in the test.
+*  // Use businessPage and userPage pages in the test.
 * test('admin and user', async ({ businessPage, userPage }) => {
 * 	// ... interact with both businessPage and userPage ...
 * 	await businessPage.page.screenshot();
