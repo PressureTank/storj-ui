@@ -61,7 +61,7 @@ const config: PlaywrightTestConfig = {
     baseURL: 'http://nightly.storj.rodeo:10000/',     /* Base URL to use in actions like `await page.goto('/')`. */
     headless: true,                                   /* Starts the UI tests in headed mode, so we can watch execution in development */
     ignoreHTTPSErrors: true,                          /* suppress the errors relative to serving web data   */
-    trace: 'retain-on-failure',                          /* Collect trace when retrying the failed test. */
+    trace: 'on-first-retry',                          /* Collect trace when retrying the failed test. */
     launchOptions: {
       slowMo: 5,
     },
