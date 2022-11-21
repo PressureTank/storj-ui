@@ -11,6 +11,7 @@ type PersonalAccount = {
 
 export const test = base.extend<{}, { personal_account: PersonalAccount } >({
     personal_account: [async ({ browser }, use, workerInfo) => {
+        // unique users by using the workers index as part of the name/email.
         const personal_worker = workerInfo.workerIndex
         const name = personal_worker + 'Test Guy';
         const email = 'personal' + personal_worker + '@mail.io'
@@ -22,6 +23,7 @@ export const test = base.extend<{}, { personal_account: PersonalAccount } >({
         await page.getByPlaceholder('user@example.com').fill(email);
         await page.getByPlaceholder('Enter Password').fill(password);
         await page.getByPlaceholder('Retype Password').fill(password);
+
         await page.getByText(/^Please have the/i).click();
         await page.getByText(/^I agree to the/i ).click();
 
