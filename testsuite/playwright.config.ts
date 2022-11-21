@@ -63,7 +63,7 @@ const config: PlaywrightTestConfig = {
     ignoreHTTPSErrors: true,                          /* suppress the errors relative to serving web data   */
     trace: 'on-first-retry',                          /* Collect trace when retrying the failed test. */
     launchOptions: {
-      slowMo: 5,
+      slowMo: process.env.CI ? 0 : 5,
     },
   },
   /* Configure projects for browsers */
