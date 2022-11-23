@@ -1,3 +1,11 @@
+node_modules/
+/test-results/
+/playwright-report/
+/playwright/.cache/
 .history
+e2e/data
+e2e/sha256.sum
 /.idea
 /.history
+e2e/.history
+results.json
