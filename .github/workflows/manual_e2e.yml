@@ -1,5 +1,3 @@
-name: UI Tests via Playwright
-
 on:
   issues:
     types:
@@ -7,8 +5,7 @@ on:
 
 jobs:
   run_if_label_matches:
-    if: github.event.label.name == 'UI-Trigger'
-  test:
+    if: github.event.label.name == 'UI-Trigger'    
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
