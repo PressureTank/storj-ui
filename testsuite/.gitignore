@@ -5,11 +5,7 @@ node_modules/
 .history
 e2e/data
 e2e/sha256.sum
-sjr
-storj-up
 /.idea
 /.history
-docker-compose.yaml
-dist/
 e2e/.history
 results.json

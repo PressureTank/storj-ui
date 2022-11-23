@@ -1,11 +1,3 @@
 .history
-cmd/storj-up
-test/data
-test/sha256.sum
-sjr
-storj-up
 /.idea
 /.history
-docker-compose.yaml
-dist/
-test/.history
