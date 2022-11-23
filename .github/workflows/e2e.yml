@@ -14,12 +14,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
   node_install:
+    needs: checkout
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
   node_deps:
+    needs: [checkout, node_install]
     runs-on: ubuntu-latest
     steps:
       - name: Install dependencies
@@ -27,11 +29,13 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
   run_tests:
+    needs: [checkout, node_install, node_deps]
     runs-on: ubuntu-latest
     steps:
       - name: Run Playwright tests
         run: npx playwright test e2e/tests/access.spec.ts
   artifacts:
+    needs: [checkout, node_install, node_deps, run_tests]
     runs-on: ubuntu-latest
     steps:
           - uses: actions/upload-artifact@v3
