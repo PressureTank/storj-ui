@@ -51,7 +51,7 @@ const config: PlaywrightTestConfig = {
     toMatchSnapshot: { threshold },                   /* only require the screenshots to be the same within a certain threshold */
   },
   fullyParallel: false,                                /* Run tests in files in parallel */
-  retries: process.env.CI ? 2 : 0,                    /* Retry on CI only */
+  retries: process.env.CI ? 1 : 0,                    /* Retry on CI only */
   workers: process.env.CI ? 1 : undefined,            /* Opt out of parallel tests on CI. */
 
   reporter: addReporter(),
