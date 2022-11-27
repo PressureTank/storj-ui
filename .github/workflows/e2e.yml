@@ -36,7 +36,10 @@ jobs:
       - uses: slackapi/slack-github-action@v1.23.0
         if: Always()
         with:
-          payload-file-path: ".github/workflows/payload.json"
+          payload: |
+            {
+              "text": "${{ github.workflow }}: ${{ github.workflow.status }} \n\n $GITHUB_STEP_SUMMARY"
+            }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK

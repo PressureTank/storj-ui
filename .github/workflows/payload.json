@@ -1,5 +1,5 @@
 {
-  "text": "${{ github.workflow }}: ${{ job.status }}",
+  "text": "${{ github.workflow }}: ${{ github.workflow.status }}",
   "attachments": [
     {
       "color": "#d90000",
