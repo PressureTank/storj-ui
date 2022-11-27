@@ -1,4 +1,5 @@
 {
+  "text": "${{ github.workflow }}: ${{ job.status }}",
   "attachments": [
     {
       "color": "#d90000",
@@ -7,7 +8,7 @@
           "type": "section",
           "text": {
             "type": "mrkdwn",
-            "text": "${{ github.workflow }} workflow failed on ${{ env.DEFAULT_BRANCH }} branch in the ${{ github.event.repository.name }} repository!"
+            "text": "The ${{ github.workflow }} workflow has executed and has ${{ job.status }} in the ${{ github.event.repository.name }} repository!"
           }
         },
         {
@@ -20,19 +21,19 @@
               "type": "button",
               "text": {
                 "type": "plain_text",
-                "text": "Build",
+                "text": "${{ github.workflow }}",
                 "emoji": true
               },
-              "url": "${{ env.REPO_URL }}/actions/runs/${{ github.run_id }}"
+              "url": "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
             },
             {
               "type": "button",
               "text": {
                 "type": "plain_text",
-                "text": "Commit",
+                "text": "Trace Viewer",
                 "emoji": true
               },
-              "url": "${{ env.REPO_URL }}/commit/${{ github.sha }}"
+              "url": "https://trace.playwright.dev/"
             }
           ]
         }
