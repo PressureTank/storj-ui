@@ -38,7 +38,7 @@ jobs:
         with:
           payload: |
             {
-              "text": "${{ github.workflow }}: ${{ github.workflow.status }} \n\n $GITHUB_STEP_SUMMARY"
+              "text": "${{ github.workflow }}: ${{ github.jobs }} \n\n ${{ github.step.summary }}"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
