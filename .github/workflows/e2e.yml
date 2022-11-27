@@ -40,7 +40,7 @@ jobs:
         with:
           payload: |
             {
-              "text": "${{ github.workflow }}: ${{ jobs.Playwright_UI_Test.status }} \n\n ${{ github.step.summary }}"
+              "text": "${{ github.workflow }}: ${{ github.job.status }} \n\n ${{ toJSON(github) }} \n\n ${{ toJSON(steps) }}"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
