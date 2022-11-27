@@ -1,3 +1,5 @@
+name: Playwright UI Tests
+
 on:
   schedule:
     - cron: '30 8 * * *'
@@ -38,7 +40,7 @@ jobs:
         with:
           payload: |
             {
-              "text": "${{ github.workflow }}: ${{ github.jobs }} \n\n ${{ github.step.summary }}"
+              "text": "${{ github.workflow }}: ${{ jobs.Playwright_UI_Test.status }} \n\n ${{ github.step.summary }}"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
