@@ -27,7 +27,7 @@ jobs:
         if: Always()
         with:
           name: Playwright-Test-Results
-          path: playwright-report/
+          path: playwright-report/index.html
           retention-days: 14
       - uses: actions/upload-artifact@v3
         if: failure()
@@ -40,7 +40,7 @@ jobs:
         with:
           payload: |
             {
-              "text": "${{ github.workflow }}: ${{ job.status }} \n <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Results>\n\n "
+              "text": "${{ github.workflow }}: ${{ job.status }} \n <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/index.html|Results>\n\n "
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
