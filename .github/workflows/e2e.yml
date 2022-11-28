@@ -40,7 +40,7 @@ jobs:
         with:
           payload: |
             {
-              "text": "${{ github.workflow }}: ${{ github.job.status }} <$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID|Results>\n\n ${{ toJSON(github) }} \n\n ${{ toJSON(jobs) }} \n\n ${{ toJSON(steps) }}"
+              "text": "${{ github.workflow }}: ${{ github.job.status }} <$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID|Results>\n\n ${{ toJSON(github) }} "
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
