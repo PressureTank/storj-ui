@@ -1,41 +1,36 @@
 {
-  "text": "${{ github.workflow }}: ${{ github.workflow.status }}",
-  "attachments": [
+  "text": "GitHub Action build result for ${{ github.workflow }}: ${{ job.status }}\n<$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID|Run Results>",
+  "blocks": [
     {
-      "color": "#d90000",
-      "blocks": [
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "GitHub Action build result for ${{ github.workflow }}: ${{ job.status }}\n<$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID|Run Results>"
+      }
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "actions",
+      "elements": [
         {
-          "type": "section",
+          "type": "button",
           "text": {
-            "type": "mrkdwn",
-            "text": "The ${{ github.workflow }} workflow has executed and has ${{ job.status }} in the ${{ github.event.repository.name }} repository!"
-          }
+            "type": "plain_text",
+            "text": "${{ github.workflow }}",
+            "emoji": true
+          },
+          "url": "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
         },
         {
-          "type": "divider"
-        },
-        {
-          "type": "actions",
-          "elements": [
-            {
-              "type": "button",
-              "text": {
-                "type": "plain_text",
-                "text": "${{ github.workflow }}",
-                "emoji": true
-              },
-              "url": "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-            },
-            {
-              "type": "button",
-              "text": {
-                "type": "plain_text",
-                "text": "Trace Viewer",
-                "emoji": true
-              },
-              "url": "https://trace.playwright.dev/"
-            }
-          ]
+          "type": "button",
+          "text": {
+            "type": "plain_text",
+            "text": "Trace Viewer",
+            "emoji": true
+          },
+          "url": "https://trace.playwright.dev/"
         }
       ]
     }
