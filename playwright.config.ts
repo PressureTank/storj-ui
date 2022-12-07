@@ -1,6 +1,6 @@
 // @ts-ignore
 import os from 'node:os';
-import { PlaywrightTestConfig, devices, ReporterDescription} from '@playwright/test';
+import type { PlaywrightTestConfig, devices, ReporterDescription} from '@playwright/test';
 
 // require('dotenv').config();
 
@@ -43,31 +43,42 @@ const isPipeline = !!process.env.CI;
 // Match pixel comparison at least 95 % to avoid flaky tests but ensure enough confidence
 const threshold = 0.95;
 
+
+
+
+
 const config: PlaywrightTestConfig = {
   testDir: './e2e',                                   /* directory where tests are located.  */
   timeout: 30 * 1000,                                 /* Maximum time one test can run for.  */
+  
   expect: {
     timeout: 4000,                                    /* Maximum time expect() should wait for the condition to be met. */
     toMatchSnapshot: { threshold },                   /* only require the screenshots to be the same within a certain threshold */
   },
+
   fullyParallel: false,                                /* Run tests in files in parallel */
+  
   retries: process.env.CI ? 1 : 0,                    /* Retry on CI only */
+  
   workers: process.env.CI ? 1 : undefined,            /* Opt out of parallel tests on CI. */
 
   reporter: addReporter(),
-
-  use: {                                              /* Shared settings for all the projects below. */
-    actionTimeout: 0,                                 /* Maximum time each action can take. */
-    baseURL: 'http://nightly.storj.rodeo:10000/',     /* Base URL to use in actions like `await page.goto('/')`. */
-    // headless: process.env.CI ? false : true,          /* Starts the UI tests in headed mode, so we can watch execution in development */
-    ignoreHTTPSErrors: true,                          /* suppress the errors relative to serving web data   */
-    trace: 'on-first-retry',                          /* Collect trace when retrying the failed test. */
-    storageState: 'storageState.json',                // Tell all tests to load signed-in state from 'storageState.json'.
-
-    launchOptions: {
-      slowMo: process.env.CI ? 0 : 5,
+  
+  globalSetup: require.resolve('./global-setup'),
+    use: {                                              /* Shared settings for all the projects below. */
+      actionTimeout: 0,                                 /* Maximum time each action can take. */
+      baseURL: 'http://nightly.storj.rodeo:10000/',     /* Base URL to use in actions like `await page.goto('/')`. */
+      
+      // headless: process.env.CI ? false : true,       /* Starts the UI tests in headed mode, so we can watch execution in development */
+      ignoreHTTPSErrors: true,                          /* suppress the errors relative to serving web data   */
+      
+      trace: 'on-first-retry',                          /* Collect trace when retrying the failed test. */
+      
+      launchOptions: {
+        slowMo: process.env.CI ? 0 : 5,
+      },
     },
-  },
+  
   /* Configure projects for browsers */
   projects: [
     {

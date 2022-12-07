@@ -12,9 +12,6 @@ test('basic access test', async ({ page }, testInfo) => {
 
 	let randomNum = getRandomInt(1000);
 	let testAccess1 = "test-" + randomNum + "-1"
-	//let testAccess1 = "test-" + testInfo.workerIndex + "-1"
-	// let testAccess2 = "test-" + randomNum + "-2"
-	// let testAccess3 = "test-" + randomNum + "-3"
 
 	if (testInfo.project.name == "Android" || testInfo.project.name == "iPhone(13)") {
 		await page.getByRole('banner').locator('svg').nth(1).click();
