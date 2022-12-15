@@ -37,3 +37,24 @@ npx playwright codegen **_url_**
     - Locale/Timezone Override
     - User Agent
 *****
+## Custom Slack reporter
+```
+npm install playwright-slack-report -D
+```
+##### playwright.config.ts mods
+```typescript
+  reporter: [
+    [
+      "./node_modules/playwright-slack-report/dist/src/SlackReporter.js",
+      {
+        channels: ["#team-integrations-console-alerts", "team-qa-github"], // provide one or more Slack channels
+        sendResults: "always", // "always" , "on-failure", "off"
+      },
+    ],
+    ["dot"], // other reporters
+  ],
+```
+environmental variable
+```shell
+SLACK_BOT_USER_OAUTH_TOKEN
+```
