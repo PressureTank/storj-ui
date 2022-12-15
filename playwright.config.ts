@@ -1,7 +1,7 @@
 // @ts-ignore
 import os from 'node:os';
-import { generateCustomLayout } from "./slackReporter"
-import type { PlaywrightTestConfig, devices, ReporterDescription} from '@playwright/test';
+import { generateCustomLayout } from './slackReporter';
+import { PlaywrightTestConfig, devices, ReporterDescription} from '@playwright/test';
 
 // require('dotenv').config();
 
@@ -63,19 +63,18 @@ const config: PlaywrightTestConfig = {
   
   workers: process.env.CI ? 1 : undefined,            /* Opt out of parallel tests on CI. */
 
-  globalSetup: require.resolve('./global-setup'),
+  // globalSetup: require.resolve('./global-setup'),
   
   reporter: [
     [
       "./node_modules/playwright-slack-report/dist/src/SlackReporter.js",
       {
-        channels: ["pw-tests", "ci"], // provide one or more Slack channels
+        channels: ["#team-integrations-console-alerts", "team-qa-github"], // provide one or more Slack channels
         sendResults: "always", // "always" , "on-failure", "off"
       },
     ],
     ["dot"],
     ["list"],
-    // other reporters
   ],
     use: {                                              /* Shared settings for all the projects below. */
       actionTimeout: 0,                                 /* Maximum time each action can take. */

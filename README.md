@@ -40,7 +40,7 @@ npx playwright codegen **_url_**
 ## Custom Slack reporter
 ```
 npm install playwright-slack-report -D
-yarn add @slack/types -D
+npm install @slack/web-api @slack/socket-mode
 ```
 ##### playwright.config.ts mods
 ```typescript

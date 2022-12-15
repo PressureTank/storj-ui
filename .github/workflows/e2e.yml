@@ -35,13 +35,13 @@ jobs:
           name: Playwright-Test-Artifacts
           path: test-results/
           retention-days: 14
-      - uses: slackapi/slack-github-action@v1.23.0
-        if: Always()
-        with:
-          payload: |
-            {
-              "text": "${{ github.workflow }}: ${{ job.status }} \n <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Results>\n\n "
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+#      - uses: slackapi/slack-github-action@v1.23.0
+#        if: Always()
+#        with:
+#          payload: |
+#            {
+#              "text": "${{ github.workflow }}: ${{ job.status }} \n <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Results>\n\n "
+#            }
+#        env:
+#          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+#          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
