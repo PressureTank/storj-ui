@@ -10,3 +10,4 @@ e2e/sha256.sum
 e2e/.history
 results.json
 .vscode/
+yarn.lock

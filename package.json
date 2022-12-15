@@ -10,5 +10,8 @@
   "devDependencies": {
     "@playwright/test": "^1.28.0",
     "playwright-slack-report": "^1.0.19"
+  },
+  "dependencies": {
+    "@slack/types": "^2.8.0"
   }
 }
